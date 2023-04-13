@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.demo</groupId>
+  <artifactId>MdemoMaven</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+<!--<distributionManagement>-->
+<!--    <repository>-->
+<!--        <id>central</id>-->
+<!--        <name>centos-releases</name>-->
+<!--        <url>http://192.168.56.105:8082/artifactory/demo-libs-release</url>-->
+<!--    </repository>-->
+<!--</distributionManagement>-->
+<distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>centos-snapshots</name>
+        <url>http://192.168.56.105:8081/artifactory/demo-libs-snapshot-local</url>
+    </snapshotRepository>
+</distributionManagement>
+
+      
+
+  
+  
+  
+  <dependencies>
+	  <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.13.2</version>
+    <scope>test</scope>
+    
+</dependency>
+ 
+ <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+<dependency>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.11.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+<dependency>
+    <groupId>org.sonarsource.scanner.maven</groupId>
+    <artifactId>sonar-maven-plugin</artifactId>
+    <version>3.9.1.2184</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.codehaus.sonar/sonar-maven-plugin -->
+<dependency>
+    <groupId>org.codehaus.sonar</groupId>
+    <artifactId>sonar-maven-plugin</artifactId>
+    <version>5.0.1</version>
+</dependency>
+
+
+
+ </dependencies>
+
+<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+        
+<plugin>
+      <groupId>org.jacoco</groupId>
+     <artifactId>jacoco-maven-plugin</artifactId>
+      <version>0.8.7</version>
+      <executions>
+        <execution>
+          <id>prepare-agent</id>
+          <goals>
+            <goal>prepare-agent</goal>
+          </goals>
+        </execution>
+        <execution>
+          <id>report</id>
+          <goals>
+            <goal>report</goal>
+          </goals>
+          <configuration>
+            <formats>
+              <format>XML</format>
+            </formats>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+    </plugins>
+</build>
+
+
+
+</project>
