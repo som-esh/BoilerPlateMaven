@@ -18,12 +18,9 @@
         <url>http://192.168.56.105:8081/artifactory/demo-libs-snapshot-local</url>
     </snapshotRepository>
 </distributionManagement>
-
-      
-
-  
-  
-  
+<properties>
+    <sonar.host.url>https://192.168.56.105:9000</sonar.host.url>
+</properties>
   <dependencies>
 	  <dependency>
     <groupId>junit</groupId>
@@ -45,15 +42,13 @@
     <artifactId>sonar-maven-plugin</artifactId>
     <version>3.9.1.2184</version>
 </dependency>
-<!-- https://mvnrepository.com/artifact/org.codehaus.sonar/sonar-maven-plugin -->
+<!-- https://mvnrepository.com/artifact/org.codehaus.sonar/sonar-plugin-api -->
 <dependency>
     <groupId>org.codehaus.sonar</groupId>
-    <artifactId>sonar-maven-plugin</artifactId>
-    <version>5.0.1</version>
+    <artifactId>sonar-plugin-api</artifactId>
+    <version>5.1</version>
+    <scope>provided</scope>
 </dependency>
-
-
-
  </dependencies>
 
 <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
@@ -64,8 +59,8 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
+                <source>11</source>
+                <target>11</target>
             </configuration>
         </plugin>
         
@@ -95,7 +90,4 @@
     </plugin>
     </plugins>
 </build>
-
-
-
 </project>
