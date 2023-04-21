@@ -18,9 +18,7 @@
         <url>http://192.168.56.105:8081/artifactory/demo-libs-snapshot-local</url>
     </snapshotRepository>
 </distributionManagement>
-<properties>
-    <sonar.host.url>http://192.168.56.105:9000</sonar.host.url>
-</properties>
+
   <dependencies>
 	  <dependency>
     <groupId>junit</groupId>
