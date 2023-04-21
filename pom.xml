@@ -19,7 +19,7 @@
     </snapshotRepository>
 </distributionManagement>
 <properties>
-    <sonar.host.url>https://192.168.56.105:9000</sonar.host.url>
+    <sonar.host.url>http://192.168.56.105:9000</sonar.host.url>
 </properties>
   <dependencies>
 	  <dependency>
