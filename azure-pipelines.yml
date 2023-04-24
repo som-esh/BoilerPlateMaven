@@ -33,8 +33,10 @@ steps:
       {
         "files": [
           {
-            "pattern": "*-$(Build.BuildNumber)-$(Build.SourceBranch)-$(Build.BuildId).jar",
-            "target": "artifactory-generic-local"
+            "pattern": "*.jar",
+            "target": "artifactory-generic-local",
+            "build": "my-build",
+            "recursive": true
           }
         ]
       }
