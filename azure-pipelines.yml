@@ -33,7 +33,7 @@ steps:
       {
         "files": [
           {
-            "pattern": "*.jar",
+            "pattern": "*.zip",
             "target": "artifactory-generic-local"
           }
         ]
