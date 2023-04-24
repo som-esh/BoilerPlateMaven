@@ -33,7 +33,7 @@ steps:
       {
         "files": [
           {
-            "pattern": "*.zip",
+            "pattern": "*-$(Build.BuildNumber)-$(Build.SourceBranch)-$(Build.BuildId).jar",
             "target": "artifactory-generic-local"
           }
         ]
