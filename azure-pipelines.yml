@@ -35,7 +35,6 @@ steps:
           {
             "pattern": "*.jar",
             "target": "artifactory-generic-local",
-            "recursive": true
           }
         ]
       }
