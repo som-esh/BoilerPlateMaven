@@ -1,0 +1,82 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+  name: Default
+  demands:
+  - agent.name -equals Lissencephaly
+
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean test install'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '11'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    
+# - task: ArtifactoryGenericUpload@2
+#   inputs:
+#     artifactoryService: 'artifactory'
+#     specSource: 'taskConfiguration'
+#     fileSpec: |
+#       {
+#         "files": [
+#           {
+#             "pattern": "*.jar",
+#             "target": "artifactory-generic-local",
+#             "recursive": "true"
+#           }
+#         ]
+#       }
+#     failNoOp: true
+#     collectBuildInfo: true
+#     includeEnvVars: true
+#     buildName: 'upload-app-linux-$(Build.SourceBranch)-$(Build.DefinitionName)'
+#     buildNumber: '$(Build.BuildNumber)-$(Build.SourceBranch)-$(Build.BuildId)'
+
+
+# - task: ArtifactoryGenericUpload@2
+#   inputs:
+#     artifactoryService: 'artifactory'
+#     specSource: 'taskConfiguration'
+#     fileSpec: |
+#       {
+#         "files": [
+#           {
+#             "pattern": "*.jar",
+#             "target": "artifactory-generic-local",
+#           }
+#         ]
+#       }
+#     failNoOp: true
+#     collectBuildInfo: true
+#     includeEnvVars: true
+#     buildName: 'upload-app-linux-$(Build.SourceBranch)-$(Build.DefinitionName)'
+#     buildNumber: '$(Build.BuildNumber)-$(Build.SourceBranch)-$(Build.BuildId)'
+    
+
+# - task: CmdLine@2
+#   inputs:
+#     script: |
+#       @echo on
+#       dir
+#       %cd%
+      
+- task: ArtifactoryMaven@2
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'install'
+    artifactoryDeployService: 'artifactory'
+    targetDeploySnapshotRepo: 'artifactory-generic-local'
+    targetDeployReleaseRepo: 'savourt'
+
