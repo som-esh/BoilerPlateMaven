@@ -1,0 +1,65 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+  name: Default
+  demands:
+  - agent.name -equals Lissencephaly
+
+
+steps:
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'sonarqube'
+    scannerMode: 'Other'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner,
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.projectKey=Minor_Assignment_4_Assignment_Integration_AYei2AZurN50WDINcj3n
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean test install sonar:sonar'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '11'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    
+- task: ArtifactoryGenericUpload@2
+  inputs:
+    artifactoryService: 'artifactory'
+    specSource: 'taskConfiguration'
+    fileSpec: |
+      {
+        "files": [
+          {
+            "pattern": "*.jar",
+            "target": "artifactory-generic-local"
+          }
+        ]
+      }
+    failNoOp: true
+
+# - task: CmdLine@2
+#   inputs:
+#     script: |
+#       @echo on
+#       dir
+#       %cd%
+      
+# - task: ArtifactoryMaven@2
+#   inputs:
+#     mavenPomFile: 'pom.xml'
+#     goals: 'clean install'
+#     artifactoryDeployService: 'artifactory'
+#     targetDeployReleaseRepo: 'example-repo-local'
+#     targetDeploySnapshotRepo: 'example-repo-local'
