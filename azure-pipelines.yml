@@ -75,7 +75,7 @@ steps:
 - task: ArtifactoryMaven@2
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean'
+    goals: 'install'
     artifactoryDeployService: 'artifactory'
     targetDeploySnapshotRepo: 'artifactory-generic-local'
     targetDeployReleaseRepo: 'savourt'
