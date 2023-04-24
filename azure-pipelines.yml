@@ -41,8 +41,9 @@ steps:
     failNoOp: true
     collectBuildInfo: true
     includeEnvVars: true
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
+    buildName: 'upload-app-linux-$(Build.SourceBranch)-$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)-$(fullVersion)-$(Build.SourceBranch)-$(Build.BuildId)'
+    
 
 # - task: CmdLine@2
 #   inputs:
