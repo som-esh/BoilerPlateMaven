@@ -78,4 +78,5 @@ steps:
     goals: 'package'
     artifactoryDeployService: 'artifactory'
     targetDeploySnapshotRepo: 'artifactory-generic-local'
+    targetDeployReleaseRepo: 'savourt'
 
