@@ -14,19 +14,10 @@ pool:
 
 
 steps:
-- task: SonarQubePrepare@5
-  inputs:
-    SonarQube: 'sonarqube'
-    scannerMode: 'Other'
-    extraProperties: |
-      # Additional properties that will be passed to the scanner,
-      # Put one key=value per line, example:
-      # sonar.exclusions=**/*.bin
-      sonar.projectKey=Minor_Assignment_4_Assignment_Integration_AYei2AZurN50WDINcj3n
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean test install sonar:sonar'
+    goals: 'clean test install'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '11'
