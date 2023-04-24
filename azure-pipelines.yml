@@ -24,25 +24,25 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     
-- task: ArtifactoryGenericUpload@2
-  inputs:
-    artifactoryService: 'artifactory'
-    specSource: 'taskConfiguration'
-    fileSpec: |
-      {
-        "files": [
-          {
-            "pattern": "*.jar",
-            "target": "artifactory-generic-local",
-            "recursive": "true"
-          }
-        ]
-      }
-    failNoOp: true
-    collectBuildInfo: true
-    includeEnvVars: true
-    buildName: 'upload-app-linux-$(Build.SourceBranch)-$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)-$(Build.SourceBranch)-$(Build.BuildId)'
+# - task: ArtifactoryGenericUpload@2
+#   inputs:
+#     artifactoryService: 'artifactory'
+#     specSource: 'taskConfiguration'
+#     fileSpec: |
+#       {
+#         "files": [
+#           {
+#             "pattern": "*.jar",
+#             "target": "artifactory-generic-local",
+#             "recursive": "true"
+#           }
+#         ]
+#       }
+#     failNoOp: true
+#     collectBuildInfo: true
+#     includeEnvVars: true
+#     buildName: 'upload-app-linux-$(Build.SourceBranch)-$(Build.DefinitionName)'
+#     buildNumber: '$(Build.BuildNumber)-$(Build.SourceBranch)-$(Build.BuildId)'
 
 
 # - task: ArtifactoryGenericUpload@2
@@ -72,11 +72,10 @@ steps:
 #       dir
 #       %cd%
       
-# - task: ArtifactoryMaven@2
-#   inputs:
-#     mavenPomFile: 'pom.xml'
-#     goals: 'clean install'
-#     artifactoryDeployService: 'artifactory'
-#     targetDeployReleaseRepo: 'example-repo-local'
-#     targetDeploySnapshotRepo: 'example-repo-local'
+- task: ArtifactoryMaven@2
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'package'
+    artifactoryDeployService: 'artifactory'
+    targetDeploySnapshotRepo: 'artifactory-generic-local'
 
