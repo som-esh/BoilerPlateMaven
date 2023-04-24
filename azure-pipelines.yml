@@ -34,7 +34,7 @@ steps:
         "files": [
           {
             "pattern": "*.jar",
-            "target": "artifactory-generic-local/$(Build.DefinitionName)"
+            "target": "artifactory-generic-local"
           }
         ]
       }
@@ -42,7 +42,7 @@ steps:
     collectBuildInfo: true
     includeEnvVars: true
     buildName: 'upload-app-linux-$(Build.SourceBranch)-$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)-$(fullVersion)-$(Build.SourceBranch)-$(Build.BuildId)'
+    buildNumber: '$(Build.BuildNumber)-$(Build.SourceBranch)-$(Build.BuildId)'
     
 
 # - task: CmdLine@2
