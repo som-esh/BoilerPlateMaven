@@ -34,15 +34,31 @@ steps:
         "files": [
           {
             "pattern": "*.jar",
-            "target": "artifactory-generic-local",
+            "target": "artifactory-generic-local"
           }
         ]
       }
     failNoOp: true
-    collectBuildInfo: true
-    includeEnvVars: true
-    buildName: 'upload-app-linux-$(Build.SourceBranch)-$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)-$(Build.SourceBranch)-$(Build.BuildId)'
+
+
+# - task: ArtifactoryGenericUpload@2
+#   inputs:
+#     artifactoryService: 'artifactory'
+#     specSource: 'taskConfiguration'
+#     fileSpec: |
+#       {
+#         "files": [
+#           {
+#             "pattern": "*.jar",
+#             "target": "artifactory-generic-local",
+#           }
+#         ]
+#       }
+#     failNoOp: true
+#     collectBuildInfo: true
+#     includeEnvVars: true
+#     buildName: 'upload-app-linux-$(Build.SourceBranch)-$(Build.DefinitionName)'
+#     buildNumber: '$(Build.BuildNumber)-$(Build.SourceBranch)-$(Build.BuildId)'
     
 
 # - task: CmdLine@2
