@@ -34,11 +34,15 @@ steps:
         "files": [
           {
             "pattern": "*.jar",
-            "target": "artifactory-generic-local"
+            "target": "artifactory-generic-local/$(Build.DefinitionName)"
           }
         ]
       }
     failNoOp: true
+    collectBuildInfo: true
+    includeEnvVars: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
 
 # - task: CmdLine@2
 #   inputs:
@@ -54,3 +58,4 @@ steps:
 #     artifactoryDeployService: 'artifactory'
 #     targetDeployReleaseRepo: 'example-repo-local'
 #     targetDeploySnapshotRepo: 'example-repo-local'
+
