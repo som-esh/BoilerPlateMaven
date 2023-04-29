@@ -54,6 +54,7 @@
 <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
 
 <build>
+	<finalName>MVC-Docker-Integration</finalName>
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
