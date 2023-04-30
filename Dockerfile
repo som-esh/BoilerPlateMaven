@@ -23,3 +23,4 @@ COPY pom.xml /build
 COPY src /build/src
 # Build application
 RUN mvn package
+COPY target/MVC-Docker-Integration.jar /build/target/MVC-Docker-Integration.jar
