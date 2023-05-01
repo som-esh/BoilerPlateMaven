@@ -3,7 +3,7 @@ RUN mkdir -p /build
 WORKDIR /build
 COPY pom.xml /build
 COPY src /build/src
-COPY target/MVC-Docker-Integration.jar /build/target/MVC-Docker-Integration.jar
+COPY target /build/target
 
 
 
