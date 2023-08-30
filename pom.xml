@@ -19,7 +19,8 @@
     </snapshotRepository>
 </distributionManagement>
 <properties>
-    <sonar.host.url>http://192.168.56.105:9000</sonar.host.url>
+    <sonar.host.url>http://192.168.56.103:9000</sonar.host.url>
+    <sonar.organization>MavenCoverage</sonar.organization>
 </properties>
   <dependencies>
 	  <dependency>
